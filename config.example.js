@@ -8,4 +8,4 @@ module.exports = {
   }
 };
 
-/* Now go to the JSONtoMongo.js file and include this file as a variable named 'config' with a require() */
+/* Now go to the JSONtoMongo.js file and include this file as a variable named 'conf with a require() */
