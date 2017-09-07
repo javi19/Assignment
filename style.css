@@ -2,7 +2,47 @@
   margin: 15px 10px;
 }
 
+body {
+  background-color: royalblue;
+  color: white;
+}
+
+.input-group-addon {
+  background-color: white;
+  color: gray;
+  border: none;
+}
+
+.btn{
+  background-color: orange;
+  color: white;
+  border-color: orange;
+  font-weight: bold;
+}
+.btn:hover{
+  background-color: darkorange;
+  color: white;
+  border-color: darkorange;
+  font-weight: bold;
+}
+
+.btn:active{
+  background-color: orange;
+  color: white;
+  border-color: orange;
+  font-weight: bold;
+}
+
 .tableWrapper {
   max-height: 400px;
   overflow: auto;
+  background-color: lightblue;
+  color: black;
+  border-radius: 4px;
+
+}
+
+.jumbotron{
+  color: black;
+  background-color: white;
 }

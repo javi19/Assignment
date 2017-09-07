@@ -22,7 +22,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     clearNow();
 
     $scope.addListing = function() {
-        var insertList = {
+        $scope.listings.push({
             name: $scope.newListing.name,
             code: $scope.newListing.code,
             address: $scope.newListing.address,
@@ -30,8 +30,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
                 latitude: $scope.newListing.coordinates.latitude,
                 longitude: $scope.newListing.coordinates.longitude
             }
-        }
-        $scope.listings.push(insertList);
+        });
         clearNow();
     };
 
@@ -45,6 +44,5 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         $scope.detailedInfo = $scope.listings[index];
         $scope.selectedIndex = index;
     };
-
   }
 ]);

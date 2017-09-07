@@ -12,12 +12,6 @@
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
-
-            <tr ng-repeat="listing in listings | filter: searchText" ng-click="showDetails($index)" ng-class="{info: $index === selectedIndex}">
-              <td>{{listing.code}}</td>
-              <td>{{listing.name}}</td>
-            </tr>
-
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control" placeholder="Search" ng-model = "searchText">
           </div>
@@ -28,38 +22,36 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-
-              <tr ng-repeat="listing in listings | filter: searchText" ng-click="showDetails($index)" ng-class="{info: $index === selectedIndex}">
-                <td>{{listing.code}}</td>
-                <td>{{listing.name}}</td>
-                <td><button type="button" class="btn btn-danger" ng-click="deleteListing($index)">Delete</button></td>
+              <tr ng-repeat=" values in listings | filter: searchText | orderBy: 'code'" ng-click="showDetails(listings.indexOf(values))" ng-class="{info: listings.indexOf(values) === selectedIndex}">
+                <td>{{values.code}}</td>
+                <td>{{values.name}}</td>
+                <td><button type="button" class="btn btn-danger" ng-click="deleteListing(listings.indexOf(values))">Delete</button></td>
               </tr>
-
             </table>
           </div>
-
           <br />
           <br />
           <form ng-submit="addListing()">
+            <h3>Insert New Information</h3>
             <div class="form-group">
-              <label for="addListingName">Name</label>
-              <input type="text" class="form-control" id="addListingName" ng-model="newListing.name" placeholder="Name">
+              <label for="addName">Name:</label>
+              <input type="text" class="form-control" id="addName" ng-model="newListing.name" placeholder="Name">
             </div>
             <div class="form-group">
-              <label for="addListingCode">Code</label>
-              <input type="text" class="form-control" id="addListingCode" ng-model="newListing.code" placeholder="Code">
+              <label for="addCode">Code:</label>
+              <input type="text" class="form-control" id="addCode" ng-model="newListing.code" placeholder="Code">
             </div>
             <div class="form-group">
-              <label for="addListingAddress">Address</label>
-              <input type="text" class="form-control" id="addListingAddress" ng-model="newListing.address" placeholder="Address">
+              <label for="addAddress">Address:</label>
+              <input type="text" class="form-control" id="addAddress" ng-model="newListing.address" placeholder="Address">
             </div>
             <div class="form-group">
-              <label for="addListingLatitude">Latitude</label>
-              <input type="number" class="form-control" id="addListingLatitude" ng-model="newListing.coordinates.latitude" placeholder="Latitude">
+              <label for="addLatitude">Latitude:</label>
+              <input type="number" class="form-control" id="addLatitude" ng-model="newListing.coordinates.latitude" placeholder="Latitude">
             </div>
             <div class="form-group">
-              <label for="addListingLongitude">Longitude</label>
-              <input type="number" class="form-control" id="addListingLongitude" ng-model="newListing.coordinates.longitude" placeholder="longitude">
+              <label for="addLongitude">Longitude:</label>
+              <input type="number" class="form-control" id="addLongitude" ng-model="newListing.coordinates.longitude" placeholder="longitude">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -70,7 +62,6 @@
         <div class="col-md-6">
           <div class="jumbotron">
             <h2>Detailed Information</h2>
-
             <div class="row">
               <div class="col-md-8">
                 <h3>{{detailedInfo.name || 'Select a listing'}}</h3>
@@ -100,7 +91,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
